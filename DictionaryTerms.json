@@ -1,0 +1,69 @@
+{
+    "Arrow": {
+        "[noun]": "Here is one arrow: <IMG> -=>> </IMG>"
+    },
+    "Book": { 
+        "[noun]": [
+            "A set of pages.",
+            "A written work published in printed or electronic form."
+        ],
+        "[verb]": [
+            "To arrange for someone to have a seat on a plane.",
+            "To arrange something on a particular date."
+        ]
+    },
+    "Distinct": {
+        "[adjective]": [
+            "Familiar. Worked in Java.",
+            "Unique. No duplicate. Clearly different or of a different kind."
+        ],
+        "[adverb]": "Uniquely. Written \"distinctly\".",
+        "[noun]": [
+            "A keyword in this assignment.",
+            "A keyword in this assignment.",
+            "A keyword in this assignment.",
+            "An advanced search option",
+            "Distinct is a parameter in this assignment."
+        ]
+    },
+    "Placeholder": {
+        "[adjective]": [
+            "To be updated...",
+            "To be updated..."
+        ],
+        "[adverb]": "To be updated...",
+        "[conjunction]": "To be updated...",
+        "[interjection]": "To be updated...",
+        "[noun]": [
+            "To be updated...",
+            "To be updated...",
+            "To be updated..."
+        ],
+        "[preposition]": "To be updated...",
+        "[pronoun]": "To be updated...",
+        "[verb]": "To be updated..."
+    },
+    "Reverse": {
+        "adjective]": [
+            "On back side.",
+            "Opposite to usual or previous arrangement"
+        ],
+        "[noun]": [
+            "A dictionary program's parameter.",
+            "Change to opposite direction.",
+            "The opposite.",
+            "To be updated...",
+            "To be updated...",
+            "To be updated...",
+            "To be updated..."
+        ],
+        "[verb]": [
+            "Change something to opposite.",
+            "Go back",
+            "Revoke ruling.",
+            "To be updated...",
+            "To be updated...",
+            "Turn something inside out."
+        ]
+    }
+}
