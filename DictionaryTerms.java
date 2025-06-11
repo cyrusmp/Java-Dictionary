@@ -1,4 +1,4 @@
-public enum DictionaryTerms {   //declare enum Java type DictionaryTerms
+public enum DictionaryTerms {   //declare enum Object type DictionaryTerms
         ARROW_NOUN_HERE("Arrow", "[noun]", "Here is one arrow: <IMG> -=>> </IMG>"),     //enum constants with three data fields
         BOOK_NOUN_SET("Book", "[noun]", "A set of pages"),
         BOOK_NOUN_WRITTEN("Book","[noun]","A written work published in printed or electronic form"),
