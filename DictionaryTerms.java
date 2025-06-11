@@ -1,5 +1,5 @@
 public enum DictionaryTerms {   //declare enum Java type DictionaryTerms
-        ARROW_NOUN_HERE("Arrow", "[noun]", "Here is one arrow: <IMG> -=>> </IMG>"),     //enum constants initialized with three data fields
+        ARROW_NOUN_HERE("Arrow", "[noun]", "Here is one arrow: <IMG> -=>> </IMG>"),     //enum constants with three data fields
         BOOK_NOUN_SET("Book", "[noun]", "A set of pages"),
         BOOK_NOUN_WRITTEN("Book","[noun]","A written work published in printed or electronic form"),
         BOOK_VERB_ARRANGE("Book", "[verb]", "To arrange for someone to have a seat on a plane."),
@@ -37,7 +37,7 @@ public enum DictionaryTerms {   //declare enum Java type DictionaryTerms
         REVERSE_VERB_TO2("Reverse", "[verb]", "To be updated..."),
         REVERSE_VERB_TURN("Reverse", "[verb]", "Turn something inside out.");
 
-        private final String keyword;   //private final data field representing the keyword
+        private final String keyword;           //private final data field representing the keyword
         private final String partOfSpeech;      //private final data field representing the part of speech
         private final String definition;        //private final data field representing the definition
 
@@ -47,15 +47,15 @@ public enum DictionaryTerms {   //declare enum Java type DictionaryTerms
                 this.definition = definition;
         }
 
-        public String getKeyword() {    //getter method for keyword
+        public String getKeyword() {            //public getter method for keyword
                 return keyword;
         }
 
-        public String getPartOfSpeech() {       //getter method for part of speech
+        public String getPartOfSpeech() {       //public getter method for part of speech
                 return partOfSpeech;
         }
 
-        public String getDefinition() { //getter method for definition
+        public String getDefinition() {         //public getter method for definition
                 return definition;
         }
 
