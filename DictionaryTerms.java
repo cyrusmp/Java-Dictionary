@@ -41,7 +41,7 @@ public enum DictionaryTerms {   //declare enum Java type DictionaryTerms
         private final String partOfSpeech;      //private final data field representing the part of speech
         private final String definition;        //private final data field representing the definition
 
-        private DictionaryTerms(String keyword, String partOfSpeech, String definition) {       //private constructor that initializes enum object
+        private DictionaryTerms(String keyword, String partOfSpeech, String definition) {       //private constructor that initializes enum constants
                 this.keyword = keyword;
                 this.partOfSpeech = partOfSpeech;
                 this.definition = definition;
