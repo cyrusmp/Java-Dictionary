@@ -1,6 +1,9 @@
 import java.util.EnumMap;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class DictionaryLoader {
 
@@ -22,10 +25,19 @@ public class DictionaryLoader {
     }
 
     public int countKeywords() {
-        Set<String> keywords = new HashSet<>();         //declare that 'keywords' of Object type Set, that will implement a new HashSet<> (an implementation of Set which holds unique objects)
+        Set<String> keywords = new HashSet<>();         //declare 'keywords' of object type Set (interface), that will implement a new HashSet<> (an implementation of Set which holds unique objects)
         for (DictionaryTerms term : dictionaryMap.keySet()) {   //for each dictionaryTerm, iterate over each key     
             keywords.add(term.getKeyword());    //extract keyword using getKeyword() method and add to keywords
         }
         return keywords.size(); //return keyword size
+    }
+
+    public int countDefinitions() {
+        List<String> definitions = new ArrayList<>();
+        for (DictionaryTerms term : DictionaryTerms.values()) {
+            String definition = term.getDefinition();
+            definitions.add(definition);
+        }
+        return definitions.size();
     }
 }

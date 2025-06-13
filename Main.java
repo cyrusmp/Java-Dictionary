@@ -9,5 +9,7 @@ public class Main {
 
         int numKeywords = loader.countKeywords();
         System.out.println("----- Keywords: " + numKeywords);
+        int numDefinitions = loader.countDefinitions();
+        System.out.println("----- Definitions: " + numDefinitions);
     }
 }
