@@ -1,17 +1,17 @@
-import java.util.Scanner;
+import java.util.Scanner;   //import Scanner class
 
-public class InteractiveDictionary {
-    public void searchBar() {
-        int searches  = 1;
-        Scanner input = new Scanner(System.in);
+public class InteractiveDictionary {    //declare publi class
+    public void searchBar() {   //declare function searchBar(): takes user input and interprets inputs
+        int searches  = 1;  //user searches begins at 1
+        Scanner input = new Scanner(System.in); //Scanner object 
 
-        while (true) {
-            System.out.print("Search [" + searches + "]: ");
-            String parameters = input.nextLine();
-            String[] inputParams = parameters.split("\\s");
+        while (true) {  //while this program is true (it will continously loop until it recieves false)
+            System.out.print("Search [" + searches + "]: "); //pompt
+            String parameters = input.nextLine();   //reads user input of Strings
+            String[] inputParams = parameters.split("\\s"); //String array initialized with Strings (split by whitespace)
              
-            for (String inputs : inputParams ) {
-                if (inputs.equalsIgnoreCase("!q")) {
+            for (String inputs : inputParams ) {    //for each input of type String, iterate over the String of array of input parameters
+                if (inputs.equalsIgnoreCase("!q")) {    //if any input is equal to !q, terminates execution of function
                     return;
                 } else if (inputs.equalsIgnoreCase("!help") || inputs.equals("")) {
                     System.out.println("    |");
@@ -26,16 +26,18 @@ public class InteractiveDictionary {
             String param3 = inputParams.length > 2 ? inputParams[2] : "";
             String param4 = inputParams.length > 3 ? inputParams[3] : "";
 
+            System.out.println("    |");
+
             for (DictionaryTerms term : DictionaryTerms.values()) {
                 if (term.getKeyword().equalsIgnoreCase(param1)) {
-                    System.out.println("    |");
                     if (param2.isEmpty() || term.getPartOfSpeech().equalsIgnoreCase(param2) && param3.isEmpty()) {
                         System.out.println("     " + term.getKeyword() + " " + term.getPartOfSpeech() + " : " + term.getDefinition());
                     }
                 }
             }
+
             System.out.println("    |");
             searches++;
-        }
-    }
-}
+        }   
+    }   ////end of while loop
+}   //end of class
