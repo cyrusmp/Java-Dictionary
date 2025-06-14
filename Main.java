@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         System.out.println("! Loading Data...");
         DictionaryLoader loader = new DictionaryLoader();
         loader.loadDictionary();                            //calls loadDictionary to input data into loader
@@ -10,6 +10,10 @@ public class Main {
         int numKeywords = loader.countKeywords();
         System.out.println("----- Keywords: " + numKeywords);
         int numDefinitions = loader.countDefinitions();
-        System.out.println("----- Definitions: " + numDefinitions);
+        System.out.println("----- Definitions: " + numDefinitions); 
+        System.out.println("");
+        
+        InteractiveDictionary start = new InteractiveDictionary();
+        start.searchBar();
     }
 }
