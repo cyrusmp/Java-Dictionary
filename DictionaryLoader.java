@@ -24,7 +24,7 @@ public class DictionaryLoader {
         }
     }
 
-    public EnumMap<DictionaryTerms, String[]> getDictionary() {  //function that retrives dictionary created in Main (for testing purposes) 
+    public EnumMap<DictionaryTerms, String[]> getDictionary() {  //function that retrieves dictionary loaded in InteractiveDictionary in Main
         return dictionaryMap;
     }
 
