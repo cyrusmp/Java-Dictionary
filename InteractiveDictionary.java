@@ -29,14 +29,14 @@ public class InteractiveDictionary {
                 System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
                 System.out.println("    |");
                 searches++;
-                continue;
+                continue;  //exits while loop
             }
 
             if (param1.equalsIgnoreCase("!q")) {
                 System.out.println();
                 System.out.println("-----THANK YOU-----");
                 System.out.println();
-                return;
+                return;  //returns control to user
             }
 
             boolean putTopLine = false;
@@ -52,16 +52,19 @@ public class InteractiveDictionary {
                     if (!putTopLine) {
                         System.out.println("    |");
                         putTopLine = true;
-                    }                
-                } else if (!keyword.equalsIgnoreCase(param1)) {
-                    System.out.println("    |");
-                    System.out.println(" <NOT FOUND> To be considered for the next release. Thank you.");
-                    System.out.println("    |");
-                    System.out.println("    |");
-                    System.out.println("     PARAMETER HOW-TO,  please enter:");
-                    System.out.println("     1. A search key -then 2. An optional part of speech -then");
-                    System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
-                }
+                    }
+                    System.out.println(" " + keyword + " [" + partOfSpeech + "] : " + definition);        
+                } 
+            }
+
+            if (!match) {
+                System.out.println("    |");
+                System.out.println(" <NOT FOUND> To be considered for the next release. Thank you.");
+                System.out.println("    |");
+                System.out.println("    |");
+                System.out.println("     PARAMETER HOW-TO,  please enter:");
+                System.out.println("     1. A search key -then 2. An optional part of speech -then");
+                System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
             }
 
             System.out.println("    |");
