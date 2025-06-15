@@ -32,8 +32,8 @@ public class InteractiveDictionary {    //declare publi class
                 if (term.getKeyword().equalsIgnoreCase(param1)) {
                     if (param2.isEmpty() || term.getPartOfSpeech().equalsIgnoreCase(param2) && param3.isEmpty()) {
                         System.out.println("     " + term.getKeyword() + " " + term.getPartOfSpeech() + " : " + term.getDefinition());
-                    } else if (param2.equals(term.getPartOfSpeech()) && param3.equalsIgnoreCase("distinct")) {
-                        System.out.println("     " + term.getKeyword() + " " + term.getPartOfSpeech() + " : " + term.getDefinition());
+                    } else if (param2.equalsIgnoreCase(term.getPartOfSpeech()) && param3.equalsIgnoreCase("distinct")) {
+                        System.out.println("     " + "[" + term.getKeyword() + "]" + " " + term.getPartOfSpeech() + " : " + term.getDefinition());
                     }
                 }
             }
