@@ -15,6 +15,6 @@ public class Main {
         System.out.println("");
 
         InteractiveDictionary start = new InteractiveDictionary(loader);  //call to instantiate InteractiveDictionary object with contents of DictionaryLoader object
-        start.searchBar();  //call to method implemented on InteractiveDictionary objects
+        start.searchBar();  //call to search InteractiveDictionary with loaded dictionary data
     }
 }
