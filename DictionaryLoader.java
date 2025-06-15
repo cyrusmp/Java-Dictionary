@@ -9,19 +9,23 @@ public class DictionaryLoader {
 
     private EnumMap<DictionaryTerms, String[]> dictionaryMap;   //declares a private field dictionaryMap of type EnumMap that maps DictionaryTerms to String array of values     
 
-    public DictionaryLoader() {                                         //public constructor that initializes dictionaryMap with enums from DictionaryTerms class
+    public DictionaryLoader() {  //constructor that creates a new object of EnumMap                                   
         dictionaryMap = new EnumMap<>(DictionaryTerms.class);
     }
 
-    public void loadDictionary() {
-        for (DictionaryTerms term : DictionaryTerms.values()) {     //for-each term of Dictionary term, iterate over terms values 
-            String[] data = new String[] {                          //declare data a new String array that holds the terms values (keyword, part of speech, and definition)
-                term.getKeyword(),                                  //zero index in String array is keyword using getKeyword method
-                term.getPartOfSpeech(),                             //first index in String array is the part of speech using getPartOfSpeech method
-                term.getDefinition()                                //second index  String array is the definition using getDefinition method
+    public void loadDictionary() {  //function that loads dictionary with values of enum class
+        for (DictionaryTerms term : DictionaryTerms.values()) {
+            String[] data = new String[] {  //instantiate a new String array that holds the enum values
+                term.getKeyword(),
+                term.getPartOfSpeech(),
+                term.getDefinition()                             
             };
-            dictionaryMap.put(term, data);                          //loads DictionaryTerm's and thier corresponding data into dictionaryMap
+            dictionaryMap.put(term, data);
         }
+    }
+
+    public EnumMap<DictionaryTerms, String[]> getDictionary() {  //function that retrives dictionary created in Main (for testing purposes) 
+        return dictionaryMap;
     }
 
     public int countKeywords() {
