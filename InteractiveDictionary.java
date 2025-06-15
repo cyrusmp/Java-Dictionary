@@ -1,17 +1,24 @@
-import java.util.Scanner;   //import Scanner class
+import java.util.EnumMap;
+import java.util.Scanner;
 
-public class InteractiveDictionary {    //declare publi class
-    public void searchBar() {   //declare function searchBar(): takes user input and interprets inputs
-        int searches  = 1;  //user searches begins at 1
-        Scanner input = new Scanner(System.in); //Scanner object 
+public class InteractiveDictionary {
+    private DictionaryLoader loader;
 
-        while (true) {  //while this program is true (it will continously loop until it recieves false)
-            System.out.print("Search [" + searches + "]: "); //pompt
-            String parameters = input.nextLine();   //reads user input of Strings
-            String[] inputParams = parameters.split("\\s"); //String array initialized with Strings (split by whitespace)
+    public InteractiveDictionary(DictionaryLoader loader) {  //constructor that isntantiates InteractiveDictionary with DictionaryLoader object
+        this.loader = loader;
+    }
+
+    public void searchBar() {         
+        int searches  = 1;
+        Scanner input = new Scanner(System.in); 
+
+        while (true) {
+            System.out.print("Search [" + searches + "]: ");
+            String parameters = input.nextLine();
+            String[] inputParams = parameters.split("\\s");
              
-            for (String inputs : inputParams ) {    //for each input of type String, iterate over the String of array of input parameters
-                if (inputs.equalsIgnoreCase("!q")) {    //if any input is equal to !q, terminates execution of function
+            for (String inputs : inputParams ) { 
+                if (inputs.equalsIgnoreCase("!q")) { 
                     return;
                 } else if (inputs.equalsIgnoreCase("!help") || inputs.equals("")) {
                     System.out.println("    |");
@@ -28,22 +35,20 @@ public class InteractiveDictionary {    //declare publi class
 
             boolean putTopLine = false;
 
-            for (DictionaryTerms term : DictionaryTerms.values()) {
-                if (term.getKeyword().equalsIgnoreCase(param1)) {
-                    if (param2.isEmpty() || term.getPartOfSpeech().equalsIgnoreCase(param2) && param3.isEmpty()) {
-                        while(!putTopLine) {
-                            System.out.println("    |");
-                            putTopLine = true;
-                        }
-                        System.out.println("     " + "[" + term.getKeyword() + "]" + " " + term.getPartOfSpeech() + " : " + term.getDefinition());
-                    } else if (param2.equalsIgnoreCase(term.getPartOfSpeech()) && param3.equalsIgnoreCase("distinct")) {
-                        System.out.println("     " + "[" + term.getKeyword() + "]" + " " + term.getPartOfSpeech() + " : " + term.getDefinition());
-                    }
+            for (EnumMap.Entry<DictionaryTerms, String[]> entry : loader.getDictionary().entrySet()) {
+                String keyword = entry.getValue()[0];
+                String partOfSpeech = entry.getValue()[1];
+                String definition = entry.getValue()[2];
+
+                if (keyword.equalsIgnoreCase(param1)) {
+
+                } else if (!keyword.equalsIgnoreCase(param1)) {
+
                 }
             }
 
             System.out.println("    |");
             searches++;
         }   
-    }   ////end of while loop
-}   //end of class
+    }
+}
