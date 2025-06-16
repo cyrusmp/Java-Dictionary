@@ -47,14 +47,21 @@ public class InteractiveDictionary {
                 String partOfSpeech = entry.getValue()[1];
                 String definition = entry.getValue()[2];
 
-                if (keyword.equalsIgnoreCase(param1)) {
+                if (keyword.equalsIgnoreCase(param1) && param2.isEmpty() && param3.isEmpty() && param4.isEmpty()) {
                     match = true;
                     if (!putTopLine) {
                         System.out.println("    |");
                         putTopLine = true;
                     }
                     System.out.println(" " + keyword + " [" + partOfSpeech + "] : " + definition);        
-                } 
+                } else if (keyword.equalsIgnoreCase(param1) && partOfSpeech.equalsIgnoreCase(param2)) {
+                    match = true;
+                    if (!putTopLine) {
+                        System.out.println("    |");
+                        putTopLine = true;
+                    }
+                    System.out.println(" " + keyword + " [" + partOfSpeech + "] : " + definition); 
+                }
             }
 
             if (!match) {
