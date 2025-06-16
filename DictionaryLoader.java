@@ -7,41 +7,42 @@ import java.util.ArrayList;
 
 public class DictionaryLoader {
 
-    private EnumMap<DictionaryTerms, String[]> dictionaryMap;   //declares a private field dictionaryMap of type EnumMap that maps DictionaryTerms to String array of values     
+    private EnumMap<DictionaryTerms, String[][]> dictionaryMap;
 
-    public DictionaryLoader() {  //constructor that creates a new object of EnumMap                                   
+    public DictionaryLoader() {                                
         dictionaryMap = new EnumMap<>(DictionaryTerms.class);
     }
 
-    public void loadDictionary() {  //function that loads dictionary with values of enum class
+    public void loadDictionary() {
         for (DictionaryTerms term : DictionaryTerms.values()) {
-            String[] data = new String[] {  //instantiate a new String array that holds the enum values
-                term.getKeyword(),
-                term.getPartOfSpeech(),
-                term.getDefinition()                             
-            };
+            String[][] data = new String[3][];
+            data[0] = new String[] {term.getKeyword()};
+            data[1] = term.getPartOfSpeech();
+            data[2] = term.getDefinition();
             dictionaryMap.put(term, data);
         }
     }
 
-    public EnumMap<DictionaryTerms, String[]> getDictionary() {  //function that retrieves dictionary loaded in InteractiveDictionary in Main
+    public EnumMap<DictionaryTerms, String[][]> getDictionary() {
         return dictionaryMap;
     }
 
     public int countKeywords() {
-        Set<String> keywords = new HashSet<>();         //declare 'keywords' of object type Set (interface), that will implement a new HashSet<> (an implementation of Set which holds unique objects)
-        for (DictionaryTerms term : dictionaryMap.keySet()) {   //for each dictionaryTerm, iterate over each key     
-            keywords.add(term.getKeyword());    //extract keyword using getKeyword() method and add to keywords
+        Set<String> keywords = new HashSet<>();
+        for (DictionaryTerms term : dictionaryMap.keySet()) {  
+            keywords.add(term.getKeyword());
         }
-        return keywords.size(); //return keyword size
+        return keywords.size();
     }
 
     public int countDefinitions() {
         List<String> definitions = new ArrayList<>();
         for (DictionaryTerms term : DictionaryTerms.values()) {
-            String definition = term.getDefinition();
-            definitions.add(definition);
+            for (String def : term.getDefinition()) {
+                definitions.add(def);
+            }
         }
         return definitions.size();
     }
+    
 }
