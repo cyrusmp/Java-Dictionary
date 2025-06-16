@@ -8,9 +8,27 @@ public class InteractiveDictionary {
         this.loader = loader;
     }
 
+    private void howToMessage() {
+        System.out.println("    |");
+        System.out.println("     PARAMETER HOW-TO,  please enter:");
+        System.out.println("     1. A search key -then 2. An optional part of speech -then");
+        System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
+        System.out.println("    |");
+    }
+
+    private void notFoundMessage() {
+        System.out.println("    |");
+        System.out.println(" <NOT FOUND> To be considered for the next release. Thank you.");
+        System.out.println("    |");
+        System.out.println("    |");
+        System.out.println("     PARAMETER HOW-TO,  please enter:");
+        System.out.println("     1. A search key -then 2. An optional part of speech -then");
+        System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
+    }
+
     public void searchBar() {         
         int searches  = 1;
-        Scanner input = new Scanner(System.in); 
+        Scanner input = new Scanner(System.in);
 
         while (true) {
             System.out.print("Search [" + searches + "]: ");
@@ -23,11 +41,7 @@ public class InteractiveDictionary {
             String param4 = inputParams.length > 3 ? inputParams[3] : "";
 
             if (param1.equals("!help") || param1.equals("")) {
-                System.out.println("    |");
-                System.out.println("     PARAMETER HOW-TO,  please enter:");
-                System.out.println("     1. A search key -then 2. An optional part of speech -then");
-                System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
-                System.out.println("    |");
+                howToMessage();
                 searches++;
                 continue;  //exits while loop
             }
@@ -65,13 +79,7 @@ public class InteractiveDictionary {
             }
 
             if (!match) {
-                System.out.println("    |");
-                System.out.println(" <NOT FOUND> To be considered for the next release. Thank you.");
-                System.out.println("    |");
-                System.out.println("    |");
-                System.out.println("     PARAMETER HOW-TO,  please enter:");
-                System.out.println("     1. A search key -then 2. An optional part of speech -then");
-                System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
+                notFoundMessage();
             }
 
             System.out.println("    |");
