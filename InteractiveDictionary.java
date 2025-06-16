@@ -53,15 +53,24 @@ public class InteractiveDictionary {
                 return;  //returns control to user
             }
 
-            boolean putTopLine = false;
-            boolean match = false;
+            boolean putTopLine = false; //a flag used to print top line over definitions
+            boolean match = false;  //a flag used to identify if keyword matches
             
             for (EnumMap.Entry<DictionaryTerms, String[]> entry : loader.getDictionary().entrySet()) {
                 String keyword = entry.getValue()[0];
                 String partOfSpeech = entry.getValue()[1];
                 String definition = entry.getValue()[2];
 
-                if (keyword.equalsIgnoreCase(param1) && param2.isEmpty() && param3.isEmpty() && param4.isEmpty()) {
+                if (keyword.equalsIgnoreCase(param1)) {
+                    match = true;
+                    if (!putTopLine) {
+                        System.out.println("    |");
+                        putTopLine = true;
+                    }
+                    System.out.println(" " + keyword + " [" + partOfSpeech + "] : " + definition); 
+                }
+
+                /*if (keyword.equalsIgnoreCase(param1) && param2.isEmpty() && param3.isEmpty() && param4.isEmpty()) {
                     match = true;
                     if (!putTopLine) {
                         System.out.println("    |");
@@ -75,7 +84,7 @@ public class InteractiveDictionary {
                         putTopLine = true;
                     }
                     System.out.println(" " + keyword + " [" + partOfSpeech + "] : " + definition); 
-                }
+                }*/
             }
 
             if (!match) {
