@@ -8,10 +8,8 @@ public class Main {
         System.out.println();
         System.out.println("===== DICTIONARY 340 JAVA =====");
 
-        int numKeywords = loader.countKeywords();  //call to count number of keywords in EnumMap
-        System.out.println("----- Keywords: " + numKeywords);
-        int numDefinitions = loader.countDefinitions();  //call to count number of definitions in EnumMap
-        System.out.println("----- Definitions: " + numDefinitions); 
+        System.out.println("----- Keywords: " + loader.countKeywords());
+        System.out.println("----- Definitions: " + loader.countDefinitions()); 
         System.out.println("");
 
         InteractiveDictionary start = new InteractiveDictionary(loader);  //call to instantiate InteractiveDictionary object with contents of DictionaryLoader object
