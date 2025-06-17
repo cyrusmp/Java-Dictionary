@@ -53,7 +53,6 @@ public class InteractiveDictionary {
         System.out.println(" <The entered 4th parameter '" + param4 + "' was disregarded.>");
         System.out.println(" <The 4th parameter should be 'reverse'.>");
         System.out.println("    |");
-
     }
 
 
@@ -82,36 +81,29 @@ public class InteractiveDictionary {
                 return;  //returns control to user
             }
 
-            boolean putTopLine = false; //a flag used to print top line over definitions
-            boolean match = false;  //a flag used to identify if keyword matches
-            
-            for (EnumMap.Entry<DictionaryTerms, String[][]> entry : loader.getDictionary().entrySet()) {
-                String[] keyword = entry.getValue()[0];
-                String[] partOfSpeech = entry.getValue()[1];
-                String[] definition = entry.getValue()[2];
-
-                
-                    
-                }
-
-                /*if (keyword.equalsIgnoreCase(param1) && param2.isEmpty() && param3.isEmpty() && param4.isEmpty()) {
-                    match = true;
-                    if (!putTopLine) {
-                        System.out.println("    |");
-                        putTopLine = true;
-                    }
-                    System.out.println(" " + keyword + " [" + partOfSpeech + "] : " + definition);        
-                } else if (keyword.equalsIgnoreCase(param1) && partOfSpeech.equalsIgnoreCase(param2)) {
-                    match = true;
-                    if (!putTopLine) {
-                        System.out.println("    |");
-                        putTopLine = true;
-                    }
-                    System.out.println(" " + keyword + " [" + partOfSpeech + "] : " + definition); 
-                }*/
-
-            if (!match) {
+            boolean validParam1 = loader.getDictionary().values().stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));
+            if (!validParam1) {
                 notFoundMessage();
+                searches++;
+                continue;
+            }
+
+            Set<String> validPartsOfSpeech = Set.of("noun", "verb", "adjective", "adverb", "conjunction", "interjection, preposition", "pronoun");
+            boolean isPartOfSpeech = false;
+            boolean isDistinct = false;
+            boolean isReverse =false;
+
+            if (!param2.isEmpty()) {
+                if (validPartsOfSpeech.contains(param2)) {
+                    isPartOfSpeech = true;
+                } else if (param2.equalsIgnoreCase("distinct")) {
+                    isDistinct = true;
+                } else if (param2.equalsIgnoreCase("reverse")) {
+                    isReverse = true;
+                } else {
+                    invalidParam2(param2);
+                    param2 = "";
+                }
             }
 
             System.out.println("    |");
