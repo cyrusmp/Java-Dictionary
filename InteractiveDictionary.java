@@ -28,6 +28,34 @@ public class InteractiveDictionary {
         System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
     }
 
+    public void invalidParam2(String param2) {
+        System.out.println("    |");
+        System.out.println(" <The entered 2nd parameter '" + param2 + "' is NOT a part of speech.>");
+        System.out.println(" <The entered 2nd parameter '" + param2 + "' is NOT 'distinct'.>");
+        System.out.println(" <The entered 2nd parameter '" + param2 + "' is NOT 'reverse'.>");
+        System.out.println(" <The entered 2nd parameter '" + param2 + "' was disregarded.>");
+        System.out.println(" <The 2nd parameter should be a part of speech or 'distinct' or 'reverse'.>");
+        System.out.println("    |");
+    }
+
+    public void invalidParam3(String param3) {
+        System.out.println("    |");
+        System.out.println(" <The entered 3rd parameter '" + param3 + "' is NOT 'distinct'.>");
+        System.out.println(" <The entered 3rd parameter '" + param3 + "' is NOT 'reverse'.>");
+        System.out.println(" <The entered 3rd parameter '" + param3 + "' was disregarded.>");
+        System.out.println(" <The 3rd parameter should be 'distinct' or 'reverse'.>");
+        System.out.println("    |");
+    }
+
+    public void invalidParam4(String param4) {
+        System.out.println("    |");
+        System.out.println(" <The entered 4th parameter '" + param4 + "' is NOT 'reverse'.>");
+        System.out.println(" <The entered 4th parameter '" + param4 + "' was disregarded.>");
+        System.out.println(" <The 4th parameter should be 'reverse'.>");
+        System.out.println("    |");
+
+    }
+
 
     public void searchBar() {         
         int searches  = 1;
