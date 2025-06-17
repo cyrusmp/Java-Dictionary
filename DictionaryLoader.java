@@ -14,6 +14,8 @@ public class DictionaryLoader {
     }
 
     public void loadDictionary() {
+        System.out.println();
+        System.out.println("! Loading Data...");
         for (DictionaryTerms term : DictionaryTerms.values()) {
             String[][] data = new String[3][];
             data[0] = new String[] {term.getKeyword()};
@@ -21,6 +23,9 @@ public class DictionaryLoader {
             data[2] = term.getDefinition();
             dictionaryMap.put(term, data);
         }
+        System.out.println("! Loading completed...");
+        System.out.println();
+        System.out.println("===== DICTIONARY 340 JAVA =====");
     }
 
     public EnumMap<DictionaryTerms, String[][]> getDictionary() {
@@ -44,5 +49,5 @@ public class DictionaryLoader {
         }
         return definitions.size();
     }
-    
+
 }
