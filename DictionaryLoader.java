@@ -41,14 +41,16 @@ public class DictionaryLoader {
         System.out.println("----- Keywords: " + keywordSize);
     }
 
-    public int countDefinitions() {
+    public void countDefinitions() {
         List<String> definitions = new ArrayList<>();
         for (DictionaryTerms term : DictionaryTerms.values()) {
             for (String def : term.getDefinition()) {
                 definitions.add(def);
             }
         }
-        return definitions.size();
+        int definitionSize = definitions.size();
+        System.out.println("----- Definitions: " + definitionSize);
+        System.out.println("");
     }
 
 }
