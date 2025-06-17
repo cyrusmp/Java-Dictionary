@@ -32,12 +32,13 @@ public class DictionaryLoader {
         return dictionaryMap;
     }
 
-    public int countKeywords() {
+    public void countKeywords() {
         Set<String> keywords = new HashSet<>();
         for (DictionaryTerms term : dictionaryMap.keySet()) {  
             keywords.add(term.getKeyword());
         }
-        return keywords.size();
+        int keywordSize = keywords.size();
+        System.out.println("----- Keywords: " + keywordSize);
     }
 
     public int countDefinitions() {
