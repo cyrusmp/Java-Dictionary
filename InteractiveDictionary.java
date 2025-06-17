@@ -28,6 +28,7 @@ public class InteractiveDictionary {
         System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
     }
 
+
     public void searchBar() {         
         int searches  = 1;
         Scanner input = new Scanner(System.in);
@@ -42,16 +43,14 @@ public class InteractiveDictionary {
             String param3 = inputParams.length > 2 ? inputParams[2] : "";
             String param4 = inputParams.length > 3 ? inputParams[3] : "";
 
-            if (param1.equals("!help") || param1.equals("")) {
+            if (param1.equalsIgnoreCase("!help") || param1.equals("")) {
                 howToMessage();
                 searches++;
                 continue;  //exits while loop
             }
 
             if (param1.equalsIgnoreCase("!q")) {
-                System.out.println();
-                System.out.println("-----THANK YOU-----");
-                System.out.println();
+                System.out.println("\n-----THANK YOU-----\n");
                 return;  //returns control to user
             }
 
