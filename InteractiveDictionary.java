@@ -2,12 +2,19 @@ import java.util.EnumMap;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Collections;
 
 public class InteractiveDictionary {
-    private DictionaryLoader loader;
 
-    public InteractiveDictionary(DictionaryLoader loader) {  //constructor that isntantiates InteractiveDictionary with DictionaryLoader object
-        this.loader = loader;
+    //holds the loaded dictioary from DictionaryLoader
+    private DictionaryLoader loadedDictionary;
+
+    //constructor that initializes InteractiveDictionary with DictionaryLoader object
+    public InteractiveDictionary(DictionaryLoader loadedDictionary) { 
+        this.loadedDictionary = loadedDictionary;
     }
 
     private void howToMessage() {
@@ -55,16 +62,20 @@ public class InteractiveDictionary {
         System.out.println("    |");
     }
 
-
+    //main interactive search loop
     public void searchBar() {         
         int searches  = 1;
         Scanner input = new Scanner(System.in);
 
+        //while loop continues until exited with !q
         while (true) {
             System.out.print("Search [" + searches + "]: ");
             String parameters = input.nextLine();
+
+            //String array hols input parameters seperated by whitespace
             String[] inputParams = parameters.split("\\s");
 
+            //Assign parameters based on input length 
             String param1 = inputParams.length > 0 ? inputParams[0] : "";
             String param2 = inputParams.length > 1 ? inputParams[1] : "";
             String param3 = inputParams.length > 2 ? inputParams[2] : "";
@@ -81,18 +92,24 @@ public class InteractiveDictionary {
                 return;  //returns control to user
             }
 
-            boolean validParam1 = loader.getDictionary().values().stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));
+            //validates first parameter, checks if keyword exists in the dictionary
+            boolean validParam1 = loadedDictionary.getDictionary().values()
+                .stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));
             if (!validParam1) {
                 notFoundMessage();
                 searches++;
                 continue;
             }
 
+            //define valid parts of speech
             Set<String> validPartsOfSpeech = Set.of("noun", "verb", "adjective", "adverb", "conjunction", "interjection, preposition", "pronoun");
+            
+            //flags to track optional parameters
             boolean isPartOfSpeech = false;
             boolean isDistinct = false;
             boolean isReverse =false;
 
+            //validates second parameter
             if (!param2.isEmpty()) {
                 if (validPartsOfSpeech.contains(param2)) {
                     isPartOfSpeech = true;
@@ -102,7 +119,76 @@ public class InteractiveDictionary {
                     isReverse = true;
                 } else {
                     invalidParam2(param2);
-                    param2 = "";
+                    param2 = "";    //resets invalid param
+                }
+            }
+
+            if (!param3.isEmpty()) {
+                if(param3.equalsIgnoreCase("distinct")) {
+                    isDistinct = true;
+                } else if (param3.equalsIgnoreCase("reverse")) {
+                    isReverse = true;
+                    param3 = "";
+                }
+            }
+
+            if (!param4.isEmpty()) {
+                if (param4.equalsIgnoreCase("reverse")) {
+                    isReverse = true;
+                } else {
+                    invalidParam4(param4);
+                    param4 = "";
+                }
+            }
+
+            //DictionaryTerms variable with no reference
+            DictionaryTerms matchedEntry = null;
+
+            //for each entry of type DictionaryTerms, retrieve keys from loadedDictionary
+            for (DictionaryTerms entry : loadedDictionary.getDictionary().keySet()) {
+                
+                //if a keyword matched param1, matchedEntry equals the keyword
+                if (entry.getKeyword().equalsIgnoreCase(param1)) {
+                    matchedEntry = entry;
+                    break;
+                }
+            }
+
+            //if matchedEntry equals something
+            if (matchedEntry != null) {
+                System.out.println("    |");
+
+                //store parts of speech for keyword
+                String[] partsOfSpeech = matchedEntry.getPartOfSpeech();
+
+                //store definitions for keyword
+                String[] definitions = matchedEntry.getDefinition();
+
+                //new ArrayList that holds definitions
+                List<String> filteredDefinitions = new ArrayList<>();
+                
+                //iterate through partsOfSpeech and add to list
+                for (int i = 0; i < partsOfSpeech.length; i++) {
+                    if (!isPartOfSpeech || partsOfSpeech[i].equalsIgnoreCase(param2)) {
+                        filteredDefinitions.add(partsOfSpeech[i] + "] : " + definitions[i]);
+                    }
+                }
+
+                if (isDistinct) {
+                    Set<String> uniqueDefinitions = new LinkedHashSet<>(filteredDefinitions);
+                    filteredDefinitions = new ArrayList<>(uniqueDefinitions);
+                }
+
+                if (isReverse) {
+                    Collections.reverse(filteredDefinitions);
+                }
+
+                if (filteredDefinitions.isEmpty()) {
+                    notFoundMessage();
+                } else {
+                    for (String def : filteredDefinitions) {
+                        System.out.println("    |" + def);
+                    }
                 }
             }
 
