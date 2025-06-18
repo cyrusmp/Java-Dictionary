@@ -76,14 +76,9 @@ public enum DictionaryTerms {
                 new String[] {"adjective", "adjective", "noun", "noun", "noun", "noun", "noun", "noun", "verb", "verb", "verb", "verb", "verb", "verb"}, 
                 new String[] {"On back side.", "Opposite to usual or previous arrangement.", "A dictionary program's parameter.", "Change to opposite direction.", "To be updated...", "To be updated...", "To be updated...", "To be updated...", "Change something to opposite.", "Go back", "Revoke ruling.", "To be updated...", "To be updated...", "Turn something inside out."});
 
-        //String to hold each keyword value
-        private final String keyword;
-
-        //String array to hold parts of speech
-        private final String[] partOfSpeech;  
-        
-        //String array to hold definitions
-        private final String[] definition; 
+        private final String keyword;                   //String to hold each keyword value
+        private final String[] partOfSpeech;            //String array to hold parts of speech
+private final String[] definition;                      //String array to hold definitions
 
         //private constructor for intitializing enum constants with values: keyword, part of speech, and definition
         private DictionaryTerms(String keyword, String[] partOfSpeech, String[] definition) {
