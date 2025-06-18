@@ -70,7 +70,7 @@ public class InteractiveDictionary {
             System.out.print("Search [" + searches + "]: ");
             String parameters = input.nextLine();
 
-            //String array hols input parameters seperated by whitespace
+            //String array holds input parameters seperated by whitespace
             String[] inputParams = parameters.split("\\s");
 
             //Assign parameters based on input length 
@@ -99,9 +99,10 @@ public class InteractiveDictionary {
                 continue;
             }
 
-            //define valid parts of speech
+            //set defines valid parts of speech
             Set<String> validPartsOfSpeech = Set.of("noun", "verb", "adjective", "adverb", "conjunction", "interjection, preposition", "pronoun");
             String lowerCasedParam2 = param2.toLowerCase();
+
             //flags to track optional parameters
             boolean isPartOfSpeech = false;
             boolean isDistinct = false;
@@ -147,7 +148,7 @@ public class InteractiveDictionary {
             //for each entry of type DictionaryTerms, retrieve keys from loadedDictionary
             for (DictionaryTerms entry : loadedDictionary.getDictionary().keySet()) {
                 
-                //if a keyword matched param1, matchedEntry equals the keyword
+                //if keyword matches param1, matchedEntry equals the keyword
                 if (entry.getKeyword().equalsIgnoreCase(param1)) {
                     matchedEntry = entry;
                     break;
@@ -157,10 +158,10 @@ public class InteractiveDictionary {
             //if matchedEntry equals something
             if (matchedEntry != null) {
 
-                //store parts of speech for keyword
+                //stores parts of speech for keyword
                 String[] partsOfSpeech = matchedEntry.getPartOfSpeech();
 
-                //store definitions for keyword
+                //stores definitions for keyword
                 String[] definitions = matchedEntry.getDefinition();
 
                 //new ArrayList that holds definitions
@@ -173,15 +174,19 @@ public class InteractiveDictionary {
                     }
                 }
 
+                //adds definitions to linked HashSet (preserves order of unique definitions if isDistinct = true)
+                //adds definitions to ArrayList
                 if (isDistinct) {
                     Set<String> uniqueDefinitions = new LinkedHashSet<>(filteredDefinitions);
                     filteredDefinitions = new ArrayList<>(uniqueDefinitions);
                 }
 
+                //copy of references added to Collections that reverses contents of ArrayList (if isReverse = true)
                 if (isReverse) {
                     Collections.reverse(filteredDefinitions);
                 }
 
+                //prints definitions if the ArrayList is not empty
                 if (filteredDefinitions.isEmpty()) {
                     notFoundMessage();
                 } else {

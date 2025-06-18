@@ -16,7 +16,7 @@ public class Main {
         //calls constructor in InteractiveDictionary to initialize new object with contents from DictionaryLoader
         InteractiveDictionary start = new InteractiveDictionary(dictionary);  
 
-        //call to searchBar() method that interacts with dictionary conents
+        //call to searchBar() method that interacts with dictionary contents
         start.searchBar(); 
     }
 }

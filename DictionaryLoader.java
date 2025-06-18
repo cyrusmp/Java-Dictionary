@@ -61,7 +61,7 @@ public class DictionaryLoader {
     //counts definitions
     public void countDefinitions() {
 
-        //A list of strings is equal to an ArrayList implementation (can hold duplicate definitions)
+        //a list of strings is equal to an ArrayList implementation (can hold duplicate definitions)
         List<String> definitions = new ArrayList<>();
 
         //iterate through each entry of type DictionaryTerms, retrieve its data
