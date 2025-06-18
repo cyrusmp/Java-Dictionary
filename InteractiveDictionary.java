@@ -35,28 +35,28 @@ public class InteractiveDictionary {
 
     public void invalidParam2(String param2) {
         System.out.println("    |");
-        System.out.println(" <The entered 2nd parameter '" + param2 + "' is NOT a part of speech.>");
-        System.out.println(" <The entered 2nd parameter '" + param2 + "' is NOT 'distinct'.>");
-        System.out.println(" <The entered 2nd parameter '" + param2 + "' is NOT 'reverse'.>");
-        System.out.println(" <The entered 2nd parameter '" + param2 + "' was disregarded.>");
-        System.out.println(" <The 2nd parameter should be a part of speech or 'distinct' or 'reverse'.>");
+        System.out.println("     <The entered 2nd parameter '" + param2 + "' is NOT a part of speech.>");
+        System.out.println("     <The entered 2nd parameter '" + param2 + "' is NOT 'distinct'.>");
+        System.out.println("     <The entered 2nd parameter '" + param2 + "' is NOT 'reverse'.>");
+        System.out.println("     <The entered 2nd parameter '" + param2 + "' was disregarded.>");
+        System.out.println("     <The 2nd parameter should be a part of speech or 'distinct' or 'reverse'.>");
         System.out.println("    |");
     }
 
     public void invalidParam3(String param3) {
         System.out.println("    |");
-        System.out.println(" <The entered 3rd parameter '" + param3 + "' is NOT 'distinct'.>");
-        System.out.println(" <The entered 3rd parameter '" + param3 + "' is NOT 'reverse'.>");
-        System.out.println(" <The entered 3rd parameter '" + param3 + "' was disregarded.>");
-        System.out.println(" <The 3rd parameter should be 'distinct' or 'reverse'.>");
+        System.out.println("     <The entered 3rd parameter '" + param3 + "' is NOT 'distinct'.>");
+        System.out.println("     <The entered 3rd parameter '" + param3 + "' is NOT 'reverse'.>");
+        System.out.println("     <The entered 3rd parameter '" + param3 + "' was disregarded.>");
+        System.out.println("     <The 3rd parameter should be 'distinct' or 'reverse'.>");
         System.out.println("    |");
     }
 
     public void invalidParam4(String param4) {
         System.out.println("    |");
-        System.out.println(" <The entered 4th parameter '" + param4 + "' is NOT 'reverse'.>");
-        System.out.println(" <The entered 4th parameter '" + param4 + "' was disregarded.>");
-        System.out.println(" <The 4th parameter should be 'reverse'.>");
+        System.out.println("     <The entered 4th parameter '" + param4 + "' is NOT 'reverse'.>");
+        System.out.println("     <The entered 4th parameter '" + param4 + "' was disregarded.>");
+        System.out.println("     <The 4th parameter should be 'reverse'.>");
         System.out.println("    |");
     }
 
@@ -107,7 +107,7 @@ public class InteractiveDictionary {
             boolean isDistinct = false;
             boolean isReverse =false;
 
-            //validates second parameter
+            //validates 2nd parameter
             if (!param2.isEmpty()) {
                 if (validPartsOfSpeech.contains(lowerCasedParam2)) {
                     isPartOfSpeech = true;
@@ -121,21 +121,23 @@ public class InteractiveDictionary {
                 }
             }
 
+            //validates 3rd parameter
             if (!param3.isEmpty()) {
                 if(param3.equalsIgnoreCase("distinct")) {
                     isDistinct = true;
                 } else if (param3.equalsIgnoreCase("reverse")) {
                     isReverse = true;
-                    param3 = "";
+                    param3 = "";    //resets invalid param
                 }
             }
 
+            //validates 4th parameter
             if (!param4.isEmpty()) {
                 if (param4.equalsIgnoreCase("reverse")) {
                     isReverse = true;
                 } else {
                     invalidParam4(param4);
-                    param4 = "";
+                    param4 = "";    //resets invalid param
                 }
             }
 
@@ -154,9 +156,6 @@ public class InteractiveDictionary {
 
             //if matchedEntry equals something
             if (matchedEntry != null) {
-
-                //stores keyword
-                String keyword = matchedEntry.getKeyword();
 
                 //store parts of speech for keyword
                 String[] partsOfSpeech = matchedEntry.getPartOfSpeech();
@@ -182,8 +181,6 @@ public class InteractiveDictionary {
                 if (isReverse) {
                     Collections.reverse(filteredDefinitions);
                 }
-
-
 
                 if (filteredDefinitions.isEmpty()) {
                     notFoundMessage();
