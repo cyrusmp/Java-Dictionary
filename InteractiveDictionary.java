@@ -1,7 +1,5 @@
-import java.util.EnumMap;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
@@ -103,7 +101,7 @@ public class InteractiveDictionary {
 
             //define valid parts of speech
             Set<String> validPartsOfSpeech = Set.of("noun", "verb", "adjective", "adverb", "conjunction", "interjection, preposition", "pronoun");
-            
+            String lowerCasedParam2 = param2.toLowerCase();
             //flags to track optional parameters
             boolean isPartOfSpeech = false;
             boolean isDistinct = false;
@@ -111,7 +109,7 @@ public class InteractiveDictionary {
 
             //validates second parameter
             if (!param2.isEmpty()) {
-                if (validPartsOfSpeech.contains(param2)) {
+                if (validPartsOfSpeech.contains(lowerCasedParam2)) {
                     isPartOfSpeech = true;
                 } else if (param2.equalsIgnoreCase("distinct")) {
                     isDistinct = true;
@@ -156,7 +154,9 @@ public class InteractiveDictionary {
 
             //if matchedEntry equals something
             if (matchedEntry != null) {
-                System.out.println("    |");
+
+                //stores keyword
+                String keyword = matchedEntry.getKeyword();
 
                 //store parts of speech for keyword
                 String[] partsOfSpeech = matchedEntry.getPartOfSpeech();
@@ -183,16 +183,18 @@ public class InteractiveDictionary {
                     Collections.reverse(filteredDefinitions);
                 }
 
+
+
                 if (filteredDefinitions.isEmpty()) {
                     notFoundMessage();
                 } else {
+                    System.out.println("    |");
                     for (String def : filteredDefinitions) {
-                        System.out.println("    |" + def);
+                        System.out.println("     " + matchedEntry.getKeyword() + " [" + def);
                     }
+                    System.out.println("    |");
                 }
             }
-
-            System.out.println("    |");
             searches++;
         }   
     }
