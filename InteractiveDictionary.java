@@ -92,7 +92,7 @@ public class InteractiveDictionary {
 
             //validates first parameter, checks if keyword exists in the dictionary
             boolean validParam1 = loadedDictionary.getDictionary().values()
-                .stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));
+                .stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));    //checks row 0 column 0 for matching keyword
             if (!validParam1) {
                 notFoundMessage();
                 searches++;
