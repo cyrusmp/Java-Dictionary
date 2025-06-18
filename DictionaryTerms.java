@@ -78,7 +78,7 @@ public enum DictionaryTerms {
 
         private final String keyword;                   //String to hold each keyword value
         private final String[] partOfSpeech;            //String array to hold parts of speech
-private final String[] definition;                      //String array to hold definitions
+        private final String[] definition;              //String array to hold definitions
 
         //private constructor for intitializing enum constants with values: keyword, part of speech, and definition
         private DictionaryTerms(String keyword, String[] partOfSpeech, String[] definition) {
