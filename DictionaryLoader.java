@@ -7,40 +7,36 @@ import java.util.ArrayList;
 
 public class DictionaryLoader {
 
-    //declare EnumMap data structure titled 'dictionaryMap' -> 
-    //Key: DictionaryTerms, Value: 2D array of Strings: [0] keyword, [1] parts of speech, [2] definitions 
+    //Private instance EnumMap data structure
+    //Key: DictionaryTerms type
+    //Value: String array containing arrays
     private EnumMap<DictionaryTerms, String[][]> dictionaryMap;
 
-    //constructer to initialize a new EnumMap for storing dictionary entries from DictionaryTerms
+    //Constructer to initialize new EnumMap that stores keys of type DictionaryTerms
     public DictionaryLoader() {                                
         dictionaryMap = new EnumMap<>(DictionaryTerms.class);
     }
 
-    //loads dictionary data from DictionaryTerms enum into the EnumMap
+    //Loads enum constants into EnumMap
     public void loadDictionary() {
         System.out.println();
         System.out.println("! Loading Data...");
 
-        //iterate through each entry in DictionaryTerms, extract and store its data
+        //For each entry of type DictionaryTerms, interate through its values
         for (DictionaryTerms entry : DictionaryTerms.values()) {
 
-            //2D array with 3 rows to hold data
+            //2D array with 3 rows to hold data containing fields: keyword, part of speech, deinition
             String[][] data = new String[3][];
-            data[0] = new String[] {entry.getKeyword()};    //row 0
-            data[1] = entry.getPartOfSpeech();              //row 1
-            data[2] = entry.getDefinition();                //row 2
+            data[0] = new String[] {entry.getKeyword()};    //Adds keywords to a new String array to be held at index 0 of data
+            data[1] = entry.getPartOfSpeech();              
+            data[2] = entry.getDefinition();                
             
-            //store data in the EnumMap
+            //loads data in EnumMap
             dictionaryMap.put(entry, data);
         }
         System.out.println("! Loading completed...");
         System.out.println();
         System.out.println("===== DICTIONARY 340 JAVA =====");
-    }
-
-    //retrieve the dictionary of type EnumMap with DictionaryTerms as key and 2D String array as value
-    public EnumMap<DictionaryTerms, String[][]> getDictionary() {
-        return dictionaryMap;
     }
 
     //counts number of unique keywords
@@ -75,5 +71,10 @@ public class DictionaryLoader {
         System.out.println("----- Definitions: " + definitionSize);
         System.out.println("");
     }
+
+        //retrieves EnumMap
+        public EnumMap<DictionaryTerms, String[][]> getDictionary() {
+            return dictionaryMap;
+        }
 
 }
