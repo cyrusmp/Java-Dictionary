@@ -1,5 +1,5 @@
 public enum DictionaryTerms {
-        //enum constants representing dictionary terms -> dictioary entry = (key, value)
+        //enum constants representing dictionary terms -> entry = (key, value)
         APPLE("Apple", 
                 new String[] {"noun", "noun"}, 
                 new String[] {"The round fruit of a tree of the rose family.", "The tree which bears apples"}),
@@ -76,9 +76,9 @@ public enum DictionaryTerms {
                 new String[] {"adjective", "adjective", "noun", "noun", "noun", "noun", "noun", "noun", "verb", "verb", "verb", "verb", "verb", "verb"}, 
                 new String[] {"On back side.", "Opposite to usual or previous arrangement.", "A dictionary program's parameter.", "Change to opposite direction.", "To be updated...", "To be updated...", "To be updated...", "To be updated...", "Change something to opposite.", "Go back", "Revoke ruling.", "To be updated...", "To be updated...", "Turn something inside out."});
 
-        private final String keyword;                   //String to hold each keyword value
-        private final String[] partOfSpeech;            //String array to hold parts of speech
-        private final String[] definition;              //String array to hold definitions
+        private final String keyword;                   //private unchangeable String to hold each keyword value
+        private final String[] partOfSpeech;            //private unchangeable String array to hold parts of speech
+        private final String[] definition;              //private unchangeable String array to hold definitions
 
         //private constructor for intitializing enum constants with values: keyword, part of speech, and definition
         private DictionaryTerms(String keyword, String[] partOfSpeech, String[] definition) {
@@ -87,17 +87,17 @@ public enum DictionaryTerms {
                 this.definition = definition;
         }
 
-        //public method keyword associated with dictionary entry
+        //retrieves keyword associated with each dictionary entry
         public String getKeyword() {
                 return keyword;
         }
 
-        //public method returns array of parts of speech associated with dictionary entry
+        //retrieves String array of parts of speech associated with each dictionary entry
         public String[] getPartOfSpeech() {
                 return partOfSpeech;
         }
 
-        //public method returns array of definitions associated with dictionary entry
+        //retrieves String array of definitions associated with each dictionary entry
         public String[] getDefinition() {
                 return definition;
         }
