@@ -31,7 +31,7 @@ public class DictionaryLoader {
             data[1] = entry.getPartOfSpeech();              
             data[2] = entry.getDefinition();                
             
-            //loads data in EnumMap
+            //Loads data in EnumMap
             dictionaryMap.put(entry, data);
         }
         System.out.println("! Loading completed...");
@@ -39,14 +39,13 @@ public class DictionaryLoader {
         System.out.println("===== DICTIONARY 340 JAVA =====");
     }
 
-    //counts number of unique keywords
+    //Counts number of unique keywords
     public void countKeywords() {
 
-        //A set of strings representing keywords is equal to a new HashSet implementation
+        //Set type variable is equal to a new HashSet implementation
         Set<String> keywords = new HashSet<>();
 
-        //iterate through every entry of type DictionaryTerms, retrieve its data
-        //add keyword from values to set 
+        //For each entry of type DictionaryTerms, iterate through its keys
         for (DictionaryTerms entry : dictionaryMap.keySet()) {  
             keywords.add(entry.getKeyword());
         }
@@ -54,15 +53,15 @@ public class DictionaryLoader {
         System.out.println("----- Keywords: " + keywordSize);
     }
 
-    //counts definitions
+    //Counts definitions
     public void countDefinitions() {
 
-        //a list of strings is equal to an ArrayList implementation (can hold duplicate definitions)
+        //List type variable is equal to ArrayList implementation (can hold duplicate definitions)
         List<String> definitions = new ArrayList<>();
 
-        //iterate through each entry of type DictionaryTerms, retrieve its data
-        //add definitions to list
+        //For each entry of type DictionaryTerms, iterate through its values
         for (DictionaryTerms entry : DictionaryTerms.values()) {
+            //For each String value, get Strings definitions
             for (String definition : entry.getDefinition()) {
                 definitions.add(definition);
             }
@@ -72,7 +71,7 @@ public class DictionaryLoader {
         System.out.println("");
     }
 
-        //retrieves EnumMap
+        //Retrieves EnumMap
         public EnumMap<DictionaryTerms, String[][]> getDictionary() {
             return dictionaryMap;
         }
