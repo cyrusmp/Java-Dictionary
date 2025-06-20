@@ -73,6 +73,12 @@ public class InteractiveDictionary {
             //String array holds input parameters seperated by whitespace
             String[] inputParams = parameters.split("\\s");
 
+            if (inputParams.length > 4) {
+                howToMessage();
+                searches++;
+                continue;
+            }
+
             //Assign parameters based on input length 
             String param1 = inputParams.length > 0 ? inputParams[0] : "";
             String param2 = inputParams.length > 1 ? inputParams[1] : "";
