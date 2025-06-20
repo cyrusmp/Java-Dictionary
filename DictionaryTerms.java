@@ -1,5 +1,5 @@
 public enum DictionaryTerms {
-        //enum constants representing dictionary terms -> entry = (key, value)
+        //Enum constants representing dictionary terms -> entry = (key, value)
         APPLE("Apple", 
                 new String[] {"noun", "noun"}, 
                 new String[] {"The round fruit of a tree of the rose family.", "The tree which bears apples"}),
@@ -80,24 +80,24 @@ public enum DictionaryTerms {
         private final String[] partOfSpeech;            //private unchangeable String array to hold parts of speech
         private final String[] definition;              //private unchangeable String array to hold definitions
 
-        //private constructor for intitializing enum constants with values: keyword, part of speech, and definition
+        //Private constructor for intitializing enum constants with values: keyword, part of speech, and definition
         private DictionaryTerms(String keyword, String[] partOfSpeech, String[] definition) {
                 this.keyword = keyword;
                 this.partOfSpeech = partOfSpeech;
                 this.definition = definition;
         }
 
-        //retrieves keyword associated with each dictionary entry
+        //Retrieves keyword associated with each dictionary entry
         public String getKeyword() {
                 return keyword;
         }
 
-        //retrieves String array of parts of speech associated with each dictionary entry
+        //Retrieves String array of parts of speech associated with each dictionary entry
         public String[] getPartOfSpeech() {
                 return partOfSpeech;
         }
 
-        //retrieves String array of definitions associated with each dictionary entry
+        //Retrieves String array of definitions associated with each dictionary entry
         public String[] getDefinition() {
                 return definition;
         }

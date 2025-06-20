@@ -7,10 +7,10 @@ import java.util.Collections;
 
 public class InteractiveDictionary {
 
-    //variable of type DictionaryLoader
+    //Variable of type DictionaryLoader
     private DictionaryLoader loadedDictionary;
 
-    //Constructor that initializes InteractiveDictionary of type DictionaryLoader
+    //Constructor that initializes InteractiveDictionary using type DictionaryLoader
     public InteractiveDictionary(DictionaryLoader loadedDictionary) { 
         this.loadedDictionary = loadedDictionary;
     }
@@ -73,6 +73,7 @@ public class InteractiveDictionary {
             //String array holds input parameters seperated by whitespace
             String[] inputParams = parameters.split("\\s");
 
+            //Checks if length of parameters exceeds four
             if (inputParams.length > 4) {
                 howToMessage();
                 searches++;
@@ -98,7 +99,7 @@ public class InteractiveDictionary {
 
             //Validates first parameter, checks if keyword exists in the dictionary
             boolean validParam1 = loadedDictionary.getDictionary().values()
-            .stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));    //Streams data in values to find match in row 0 column 0 holding keywords
+            .stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));    //Streams data in values to find matching keyword in row 0 column 0
             
             if (!validParam1) {
                 notFoundMessage();
@@ -176,15 +177,15 @@ public class InteractiveDictionary {
                 //Variable of type List implements new ArrayList
                 List<String> filteredDefinitions = new ArrayList<>();
                 
-                //i iterates through length of partsOfSpeech array
-                //Adds definitions to filteredDefinitions that match part of speech
+                //iterate through length of partsOfSpeech array
+                //Add definitions to filteredDefinitions that match part of speech
                 for (int i = 0; i < partsOfSpeech.length; i++) {
                     if (!isPartOfSpeech || partsOfSpeech[i].equalsIgnoreCase(param2)) {
                         filteredDefinitions.add(partsOfSpeech[i] + "] : " + definitions[i]);
                     }
                 }
 
-                //Set of type string holds unique definitions in a LinkedHashSet
+                //Set of type string holds unique definitions in a LinkedHashSet implementation
                 //Defintiions are placed in an ArrayList and put in filteredDefinitions
                 if (isDistinct) {
                     Set<String> uniqueDefinitions = new LinkedHashSet<>(filteredDefinitions);
