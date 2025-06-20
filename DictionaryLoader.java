@@ -9,10 +9,10 @@ public class DictionaryLoader {
 
     //Private instance EnumMap data structure
     //Key: DictionaryTerms type
-    //Value: String array containing arrays
+    //Value: 2D String array
     private EnumMap<DictionaryTerms, String[][]> dictionaryMap;
 
-    //Constructer to initialize new EnumMap that stores keys of type DictionaryTerms
+    //Constructor to initialize new EnumMap that stores keys of type DictionaryTerms
     public DictionaryLoader() {                                
         dictionaryMap = new EnumMap<>(DictionaryTerms.class);
     }
@@ -22,10 +22,10 @@ public class DictionaryLoader {
         System.out.println();
         System.out.println("! Loading Data...");
 
-        //For each entry of type DictionaryTerms, interate through its values
+        //For each entry of type DictionaryTerms, iterate through enum constants
         for (DictionaryTerms entry : DictionaryTerms.values()) {
 
-            //2D array with 3 rows to hold data containing fields: keyword, part of speech, deinition
+            //2D array with 3 rows to hold data containing fields: keyword, part of speech, definition
             String[][] data = new String[3][];
             data[0] = new String[] {entry.getKeyword()};    //Adds keywords to a new String array to be held at index 0 of data
             data[1] = entry.getPartOfSpeech();              
@@ -45,7 +45,7 @@ public class DictionaryLoader {
         //Set type variable is equal to a new HashSet implementation
         Set<String> keywords = new HashSet<>();
 
-        //For each entry of type DictionaryTerms, iterate through its keys
+        //For each entry of type DictionaryTerms, iterate through keys of EnumMap
         for (DictionaryTerms entry : dictionaryMap.keySet()) {  
             keywords.add(entry.getKeyword());
         }
@@ -59,9 +59,9 @@ public class DictionaryLoader {
         //List type variable is equal to ArrayList implementation (can hold duplicate definitions)
         List<String> definitions = new ArrayList<>();
 
-        //For each entry of type DictionaryTerms, iterate through its values
+        //For each entry of type DictionaryTerms, iterate through enum constants
         for (DictionaryTerms entry : DictionaryTerms.values()) {
-            //For each String value, get Strings definitions
+            //Iterate through each definition string returned by getDefinition()
             for (String definition : entry.getDefinition()) {
                 definitions.add(definition);
             }
