@@ -87,7 +87,7 @@ public class InteractiveDictionary {
 
             if (param1.equalsIgnoreCase("!q")) {
                 System.out.println("\n-----THANK YOU-----\n");
-                return;  //Returns control to user
+                System.exit(0); //Ends program
             }
 
             //Validates first parameter, checks if keyword exists in the dictionary
@@ -158,38 +158,39 @@ public class InteractiveDictionary {
                 }
             }
 
-            //if matchedEntry equals something
+            //If matchedEntry is not null...
             if (matchedEntry != null) {
 
-                //stores parts of speech for keyword
+                //String array stores parts of speech of keyword
                 String[] partsOfSpeech = matchedEntry.getPartOfSpeech();
 
-                //stores definitions for keyword
+                //String array stores definitions of keyword
                 String[] definitions = matchedEntry.getDefinition();
 
-                //new ArrayList that holds definitions
+                //Variable of type List implements new ArrayList
                 List<String> filteredDefinitions = new ArrayList<>();
                 
-                //iterate through partsOfSpeech and add to list
+                //i iterates through length of partsOfSpeech array
+                //Adds definitions to filteredDefinitions that match part of speech
                 for (int i = 0; i < partsOfSpeech.length; i++) {
                     if (!isPartOfSpeech || partsOfSpeech[i].equalsIgnoreCase(param2)) {
                         filteredDefinitions.add(partsOfSpeech[i] + "] : " + definitions[i]);
                     }
                 }
 
-                //adds definitions to linked HashSet (preserves order of unique definitions if isDistinct = true)
-                //adds definitions to ArrayList
+                //Set of type string holds unique definitions in a LinkedHashSet
+                //Defintiions are placed in an ArrayList and put in filteredDefinitions
                 if (isDistinct) {
                     Set<String> uniqueDefinitions = new LinkedHashSet<>(filteredDefinitions);
                     filteredDefinitions = new ArrayList<>(uniqueDefinitions);
                 }
 
-                //copy of references added to Collections that reverses contents of ArrayList (if isReverse = true)
+                //Reverses contents of filteredDefinitions
                 if (isReverse) {
                     Collections.reverse(filteredDefinitions);
                 }
 
-                //prints definitions if the ArrayList is not empty
+                //Prints format
                 if (filteredDefinitions.isEmpty()) {
                     notFoundMessage();
                 } else {
@@ -200,7 +201,7 @@ public class InteractiveDictionary {
                     System.out.println("    |");
                 }
             }
-            searches++;
+            searches++; //Increments search until program quits
         }   
     }
 }
