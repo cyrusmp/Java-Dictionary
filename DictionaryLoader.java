@@ -1,3 +1,12 @@
+/****************************************************************
+*
+* File: [DictionaryLoader.java]
+* By: [Cyrus Molina-Perez]
+* Date: [06/19/2025]
+*
+* Description: [Loads Dictionary terms into an EnumMap and provides methods to count keywords, countdefinitions, and get dictionary]
+*
+****************************************************************/
 import java.util.EnumMap;
 import java.util.Set;
 import java.util.HashSet;

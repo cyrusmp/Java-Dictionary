@@ -1,3 +1,12 @@
+/****************************************************************
+*
+* File: [DictionaryTerms.java]
+* By: [Cyrus Molina-Perez]
+* Date: [06/19/2025]
+*
+* Description: [Enum class that defines constants and its associated data using private constructor, along with getter methods to retrieve specific data fields]
+*
+****************************************************************/
 public enum DictionaryTerms {
         //Enum constants representing dictionary terms -> entry = (key, value)
         APPLE("Apple", 
