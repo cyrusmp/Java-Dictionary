@@ -34,7 +34,7 @@ public class InteractiveDictionary {
 
     private void notFoundMessage() {
         System.out.println("    |");
-        System.out.println(" <NOT FOUND> To be considered for the next release. Thank you.");
+        System.out.println("     <NOT FOUND> To be considered for the next release. Thank you.");
         System.out.println("    |");
         System.out.println("    |");
         System.out.println("     PARAMETER HOW-TO,  please enter:");
