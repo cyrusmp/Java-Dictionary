@@ -128,8 +128,10 @@ public class InteractiveDictionary {
                 if(param3.equalsIgnoreCase("distinct")) {
                     isDistinct = true;
                 } else if (param3.equalsIgnoreCase("reverse")) {
-                    isReverse = true;
-                    param3 = "";    
+                    isReverse = true;   
+                } else {
+                    invalidParam3(param3);
+                    param3 = "";
                 }
             }
 
