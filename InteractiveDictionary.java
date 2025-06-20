@@ -33,7 +33,7 @@ public class InteractiveDictionary {
         System.out.println("     3. An optional 'distinct' -then 4. An optional 'reverse'");
     }
 
-    public void invalidParam2(String param2) {
+    private void invalidParam2(String param2) {
         System.out.println("    |");
         System.out.println("     <The entered 2nd parameter '" + param2 + "' is NOT a part of speech.>");
         System.out.println("     <The entered 2nd parameter '" + param2 + "' is NOT 'distinct'.>");
@@ -43,7 +43,7 @@ public class InteractiveDictionary {
         System.out.println("    |");
     }
 
-    public void invalidParam3(String param3) {
+    private void invalidParam3(String param3) {
         System.out.println("    |");
         System.out.println("     <The entered 3rd parameter '" + param3 + "' is NOT 'distinct'.>");
         System.out.println("     <The entered 3rd parameter '" + param3 + "' is NOT 'reverse'.>");
@@ -52,7 +52,7 @@ public class InteractiveDictionary {
         System.out.println("    |");
     }
 
-    public void invalidParam4(String param4) {
+    private void invalidParam4(String param4) {
         System.out.println("    |");
         System.out.println("     <The entered 4th parameter '" + param4 + "' is NOT 'reverse'.>");
         System.out.println("     <The entered 4th parameter '" + param4 + "' was disregarded.>");
@@ -177,7 +177,7 @@ public class InteractiveDictionary {
                 //Variable of type List implements new ArrayList
                 List<String> filteredDefinitions = new ArrayList<>();
                 
-                //iterate through length of partsOfSpeech array
+                //Iterate through length of partsOfSpeech array
                 //Add definitions to filteredDefinitions that match part of speech
                 for (int i = 0; i < partsOfSpeech.length; i++) {
                     if (!isPartOfSpeech || partsOfSpeech[i].equalsIgnoreCase(param2)) {

@@ -31,7 +31,7 @@ public class DictionaryLoader {
             data[1] = entry.getPartOfSpeech();              
             data[2] = entry.getDefinition();                
             
-            //Loads data in EnumMap
+            //Loads entries and data into EnumMap
             dictionaryMap.put(entry, data);
         }
         System.out.println("! Loading completed...");
