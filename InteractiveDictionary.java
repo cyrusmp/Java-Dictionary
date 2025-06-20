@@ -7,10 +7,10 @@ import java.util.Collections;
 
 public class InteractiveDictionary {
 
-    //holds the loaded dictioary from DictionaryLoader
+    //variable of type DictionaryLoader
     private DictionaryLoader loadedDictionary;
 
-    //constructor that initializes InteractiveDictionary with DictionaryLoader object
+    //Constructor that initializes InteractiveDictionary of type DictionaryLoader
     public InteractiveDictionary(DictionaryLoader loadedDictionary) { 
         this.loadedDictionary = loadedDictionary;
     }
@@ -60,12 +60,12 @@ public class InteractiveDictionary {
         System.out.println("    |");
     }
 
-    //main interactive search loop
+    //Main interactive search loop
     public void searchBar() {         
         int searches  = 1;
         Scanner input = new Scanner(System.in);
 
-        //while loop continues until exited with !q
+        //While loop
         while (true) {
             System.out.print("Search [" + searches + "]: ");
             String parameters = input.nextLine();
@@ -82,33 +82,34 @@ public class InteractiveDictionary {
             if (param1.equalsIgnoreCase("!help") || param1.equals("")) {
                 howToMessage();
                 searches++;
-                continue;  //exits while loop
+                continue;  //Exits while loop
             }
 
             if (param1.equalsIgnoreCase("!q")) {
                 System.out.println("\n-----THANK YOU-----\n");
-                return;  //returns control to user
+                return;  //Returns control to user
             }
 
-            //validates first parameter, checks if keyword exists in the dictionary
+            //Validates first parameter, checks if keyword exists in the dictionary
             boolean validParam1 = loadedDictionary.getDictionary().values()
-                .stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));    //checks row 0 column 0 for matching keyword
+            .stream().anyMatch(data -> data[0][0].equalsIgnoreCase(param1));    //Streams data in values to find match in row 0 column 0 holding keywords
+            
             if (!validParam1) {
                 notFoundMessage();
                 searches++;
                 continue;
             }
 
-            //set defines valid parts of speech
+            //Set holding valid parts of speech
             Set<String> validPartsOfSpeech = Set.of("noun", "verb", "adjective", "adverb", "conjunction", "interjection, preposition", "pronoun");
             String lowerCasedParam2 = param2.toLowerCase();
 
-            //flags to track optional parameters
+            //Flags to track optional parameters
             boolean isPartOfSpeech = false;
             boolean isDistinct = false;
             boolean isReverse =false;
 
-            //validates 2nd parameter
+            //Validates 2nd parameter
             if (!param2.isEmpty()) {
                 if (validPartsOfSpeech.contains(lowerCasedParam2)) {
                     isPartOfSpeech = true;
@@ -118,37 +119,37 @@ public class InteractiveDictionary {
                     isReverse = true;
                 } else {
                     invalidParam2(param2);
-                    param2 = "";    //resets invalid param
+                    param2 = "";    //Resets invalid param
                 }
             }
 
-            //validates 3rd parameter
+            //Validates 3rd parameter
             if (!param3.isEmpty()) {
                 if(param3.equalsIgnoreCase("distinct")) {
                     isDistinct = true;
                 } else if (param3.equalsIgnoreCase("reverse")) {
                     isReverse = true;
-                    param3 = "";    //resets invalid param
+                    param3 = "";    
                 }
             }
 
-            //validates 4th parameter
+            //Validates 4th parameter
             if (!param4.isEmpty()) {
                 if (param4.equalsIgnoreCase("reverse")) {
                     isReverse = true;
                 } else {
                     invalidParam4(param4);
-                    param4 = "";    //resets invalid param
+                    param4 = "";    
                 }
             }
 
-            //DictionaryTerms variable with no reference
+            //DictionaryTerms type variable with no reference
             DictionaryTerms matchedEntry = null;
 
-            //for each entry of type DictionaryTerms, retrieve keys from loadedDictionary
+            //For each entry of type DictionaryTerms, retrieve keys from loadedDictionary
             for (DictionaryTerms entry : loadedDictionary.getDictionary().keySet()) {
                 
-                //if keyword matches param1, matchedEntry equals the keyword
+                //If keyword matches param1, matchedEntry equals the keyword
                 if (entry.getKeyword().equalsIgnoreCase(param1)) {
                     matchedEntry = entry;
                     break;
