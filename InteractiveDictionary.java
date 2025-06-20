@@ -1,3 +1,12 @@
+/****************************************************************
+*
+* File: [DictionaryLoader.java]
+* By: [Cyrus Molina-Perez]
+* Date: [06/19/2025]
+*
+* Description: [Conducts interactive search based on user input, provides results in specific formats including keywords, defintions, parts of speech, and error messages]
+*
+****************************************************************/
 import java.util.Scanner;
 import java.util.Set;
 import java.util.List;
