@@ -1,3 +1,12 @@
+/****************************************************************
+*
+* File: [DictionaryLoader.java]
+* By: [Cyrus Molina-Perez]
+* Date: [06/19/2025]
+*
+* Description: [Main class that invokes methods to create, load, and interact with dictionary]
+*
+****************************************************************/
 public class Main {
     public static void main(String[] args){
         
