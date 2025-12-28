@@ -4,11 +4,13 @@
 * By: [Cyrus Molina-Perez]
 * Date: [06/19/2025]
 *
-* Description: [Enum class that defines constants and its associated data using private constructor, along with getter methods to retrieve specific data fields]
+* Description: [An enum class that contains enumeration constant keywords and their associated data, along with a constructor and getter methods]
 *
 ****************************************************************/
 public enum DictionaryTerms {
-        //Enum constants representing dictionary terms -> entry = (key, value)
+        //Keywords with 3 values: 1 String and 2 String arrays
+        //All objects, including arrays, are stored in the heap
+        //Array contents of Strings may or may not be in the string pool (Strings created at runtime are not in the string pool unless interned)
         APPLE("Apple", 
                 new String[] {"noun", "noun"}, 
                 new String[] {"The round fruit of a tree of the rose family.", "The tree which bears apples"}),
@@ -23,7 +25,7 @@ public enum DictionaryTerms {
         
         BUTTON("Button", 
                 new String[] {"noun", "verb"}, 
-                new String[] {"A small disk or know sewn on to a garment.", "Fasten with buttons."}),
+                new String[] {"A small disk or knot sewn on to a garment.", "Fasten with buttons."}),
         
         CANDY("Candy", 
                 new String[] {"noun", "verb"}, 
@@ -85,18 +87,22 @@ public enum DictionaryTerms {
                 new String[] {"adjective", "adjective", "noun", "noun", "noun", "noun", "noun", "noun", "noun", "verb", "verb", "verb", "verb", "verb", "verb"}, 
                 new String[] {"On back side.", "Opposite to usual or previous arrangement.", "A dictionary program's parameter.", "Change to opposite direction.", "The opposite.", "To be updated...", "To be updated...", "To be updated...", "To be updated...", "Change something to opposite.", "Go back", "Revoke ruling.", "To be updated...", "To be updated...", "Turn something inside out."});
 
-        private final String keyword;                   //private unchangeable String to hold each keyword value
-        private final String[] partOfSpeech;            //private unchangeable String array to hold parts of speech
-        private final String[] definition;              //private unchangeable String array to hold definitions
+        private final String keyword;                   //private immutable String to hold each keyword value
+        private final String[] partOfSpeech;            //private immutable String array to hold parts of speech
+        private final String[] definition;              //private immutable String array to hold definitions
 
-        //Private constructor for intitializing enum constants with values: keyword, part of speech, and definition
+        //Private constructor intitializes fields of enum constant
+        //Loads once per constant at class-loading time
+        //Cannot be called manually, only enum constants can call it 
         private DictionaryTerms(String keyword, String[] partOfSpeech, String[] definition) {
                 this.keyword = keyword;
                 this.partOfSpeech = partOfSpeech;
                 this.definition = definition;
         }
 
+        //Getter methods, return stored values
         //Retrieves keyword associated with each dictionary entry
+        //USE: DictionaryTerms.APPLE.getKeyword();
         public String getKeyword() {
                 return keyword;
         }

@@ -4,7 +4,7 @@
 * By: [Cyrus Molina-Perez]
 * Date: [06/19/2025]
 *
-* Description: [Loads Dictionary terms into an EnumMap and provides methods to count keywords, countdefinitions, and get dictionary]
+* Description: [DictionaryLoader class contains EnumMap object and methods to count keywords, countdefinitions, and get dictionary]
 *
 ****************************************************************/
 import java.util.EnumMap;
